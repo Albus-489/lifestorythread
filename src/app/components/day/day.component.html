@@ -1,0 +1,24 @@
+<div class="day-box">
+  <!-- <div class="name">{{ dayName }}</div> -->
+  <ng-container *ngIf="isDayOfWeek; else elseTemplate">
+    <div [ngClass]="{ weekend: isWeekend }" class="dayOfWeek">
+      {{ dayName }}
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div
+      [ngClass]="{
+        hiddenDay: isHidden,
+        currentDay: isCurrentDay,
+        greatGrade: greatGrade,
+        goodGrade: goodGrade,
+        normalGrade: normalGrade,
+        badGrade: badGrade,
+        terribleGrade: terribleGrade
+      }"
+      class="day"
+    >
+      {{ day }}
+    </div>
+  </ng-template>
+</div>

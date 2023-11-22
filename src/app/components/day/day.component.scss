@@ -1,0 +1,64 @@
+.day {
+  min-width: 75px;
+  height: 75px;
+  background-color: rgb(63, 55, 55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  border-radius: 100%;
+  font-size: larger;
+  transition: box-shadow 1s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(243, 148, 80, 0.723);
+    transition: box-shadow 0.1s;
+  }
+}
+
+.dayOfWeek {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 75px;
+  font-size: larger;
+}
+
+.day-box {
+  margin: 0 20px 25px 0;
+}
+.hiddenDay {
+  visibility: hidden;
+}
+
+.weekend {
+  color: #ffbf00bc;
+}
+
+.currentDay {
+  color: rgb(251, 242, 221);
+  box-shadow: 0 0 10px rgba(254, 255, 253, 0.674);
+}
+
+.greatGrade {
+  background-color: rgb(40, 166, 44);
+}
+
+.goodGrade {
+  background-color: rgba(40, 90, 166, 0.7);
+}
+
+.normalGrade {
+  background-color: rgba(156, 166, 40, 0.7);
+}
+
+.badGrade {
+  background-color: rgba(166, 114, 40, 0.7);
+}
+
+.terribleGrade {
+  background-color: rgba(166, 40, 40, 0.7);
+}
