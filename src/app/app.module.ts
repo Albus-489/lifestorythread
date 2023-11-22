@@ -11,6 +11,7 @@ import { DayComponent } from './components/day/day.component';
 import { MonthComponent } from './components/month/month.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { SwitcherComponent } from './components/switcher/switcher.component';
+import { DayPageComponent } from './components/day-page/day-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SwitcherComponent } from './components/switcher/switcher.component';
     MonthComponent,
     AddCommentComponent,
     SwitcherComponent,
+    DayPageComponent,
   ],
   imports: [
     BrowserModule,
