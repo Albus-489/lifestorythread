@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { format } from 'date-fns';
 import { Router } from '@angular/router';
+import { IMark } from 'src/app/models/IMark';
+import { DayPageService } from 'src/app/services/day-page.service';
 
 @Component({
   selector: 'app-day',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class DayComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dayPageService: DayPageService) {
   }
 
   @Input() day: number = 0;
@@ -17,8 +19,9 @@ export class DayComponent implements OnInit {
   @Input() isDayOfWeek: boolean = false;
   @Input() isCurrentDay: boolean = false;
   @Input() currentDate: string = '';
-  @Input() gradeMark: number = 0;
+  @Input() marks: IMark[] = [];
 
+  gradeMark: number = 0;
   realDate = new Date();
 
   isHidden: boolean = false;
@@ -42,11 +45,15 @@ export class DayComponent implements OnInit {
   }
 
   handleDayBoxClick() {
+    this.dayPageService.dayData = this.marks;
     this.router.navigate(['/day']);
   }
 
   setGrade() {
-    console.log(this.gradeMark);
+    const rateMark = this.marks.find((mark) => mark.type?.endsWith('RateMark'));
+    if (rateMark) {
+      this.gradeMark = rateMark.grade || 0;
+    }
 
     switch (this.gradeMark) {
       case 3:

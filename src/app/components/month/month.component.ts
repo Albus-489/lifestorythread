@@ -26,7 +26,7 @@ export class MonthComponent {
   weeks: { days: IDay[] }[] = [];
   currentDate: any = ''
   monthData: { _id: string, marks: IMark[], day: string }[] = []
-  emptyDay: IDay = { num: 0, name: '', grade: 0 }
+  emptyDay: IDay = { num: 0, name: '', grade: 0, marks: [] }
   isLoading: boolean = true
   randomPhrase: string = "Loading...";
 
@@ -79,16 +79,11 @@ export class MonthComponent {
           const matchingDayDB = this.monthData.find((dbDay) => dbDay.day === `${this.currentYear}-${m}-${d}`);
 
           if (matchingDayDB) {
-            // Устанавливаем оценку, если существует соответствующий тип в marks
-            const rateMark = matchingDayDB.marks.find((mark) => mark.type?.endsWith('RateMark'));
-            if (rateMark) {
-              day.grade = rateMark.grade || 0;
-            }
+            day.marks = matchingDayDB.marks
           }
         }
       }
     }
-    console.log(this.weeks[0].days);
 
   }
 
@@ -125,7 +120,7 @@ export class MonthComponent {
         const dayNumber = currentDay;
         const dayOfWeek = getDay(new Date(this.currentYear, this.currentMonth - 1, dayNumber));
         const dayName = this.getDayName(dayOfWeek);
-        days.push({ num: dayNumber, name: dayName, grade: 0 });
+        days.push({ num: dayNumber, name: dayName, grade: 0, marks: [] });
         currentDay++;
       }
       this.weeks.push({ days });
