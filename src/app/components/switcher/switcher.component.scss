@@ -1,0 +1,30 @@
+.switcher {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: space-evenly;
+  color: wheat;
+
+  font-size: larger;
+  margin-bottom: 25px;
+
+  .arrow {
+    cursor: pointer;
+    align-self: stretch;
+    font-size: 35px;
+    padding: 0 15px;
+    transition: color 0.3s;
+    font-weight: 500;
+  }
+
+  .arrow:hover {
+    color: #b67f61;
+  }
+
+  .monthyear {
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: 300;
+  }
+}
