@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { format } from 'date-fns';
-import { isEmpty } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-day',
@@ -8,6 +8,9 @@ import { isEmpty } from 'rxjs';
   styleUrls: ['./day.component.scss'],
 })
 export class DayComponent implements OnInit {
+
+  constructor(private router: Router) {
+  }
 
   @Input() day: number = 0;
   @Input() dayName: string = '';
@@ -36,6 +39,10 @@ export class DayComponent implements OnInit {
       this.setGrade();
     }
 
+  }
+
+  handleDayBoxClick() {
+    this.router.navigate(['/day']);
   }
 
   setGrade() {
